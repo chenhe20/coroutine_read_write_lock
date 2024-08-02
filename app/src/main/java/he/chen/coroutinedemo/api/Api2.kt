@@ -9,6 +9,8 @@ import kotlin.coroutines.suspendCoroutine
 
 class Api2 {
 
+    // bad code
+
     suspend fun request(input: String): String? =
         withContext(Dispatchers.IO) {
             suspendCoroutine { cont ->
