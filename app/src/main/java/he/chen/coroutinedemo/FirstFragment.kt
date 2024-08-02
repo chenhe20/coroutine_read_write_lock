@@ -24,6 +24,8 @@ import kotlin.contracts.contract
  */
 class FirstFragment : Fragment() {
 
+    // new feature
+
     private var _binding: FragmentFirstBinding? = null
 
     private var a: String? = null
