@@ -15,6 +15,8 @@ object ReadWriteLockFileUtils {
 
     private val lock = CustomReadWriteLock()
 
+    // another code here
+
     @WorkerThread
     suspend fun write(fileName: String, data: String) {
         lock.write {
