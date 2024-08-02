@@ -17,6 +17,8 @@ import kotlinx.coroutines.withTimeoutOrNull
 
 class TestRepo1 {
 
+    // a good code
+
     private val api1 = Api1()
     private val localDataSource = Repo1LocalDataSource()
 
