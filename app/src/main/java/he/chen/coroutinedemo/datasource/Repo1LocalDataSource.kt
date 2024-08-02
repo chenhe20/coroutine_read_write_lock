@@ -54,4 +54,6 @@ class MyLazy<out T: Any?>(
             value!!
         } else value!!
     }
+
+    // some other code here
 }
