@@ -9,6 +9,8 @@ import kotlinx.coroutines.launch
 
 object CoroutineHelper {
 
+    // bad code in release
+
     // my changes in the feature branch
 
     @JvmStatic
