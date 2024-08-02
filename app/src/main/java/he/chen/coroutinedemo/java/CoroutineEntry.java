@@ -11,6 +11,8 @@ import kotlinx.coroutines.GlobalScope;
 
 public class CoroutineEntry {
 
+    // my feature code
+
     public static void callSuspendFunction(Context context) {
         if (context != null) {
             CoroutineHelper.call(context);
