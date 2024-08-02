@@ -17,8 +17,9 @@ object CoroutineHelper {
     }
 
     suspend fun doSuspend(context: Context) {
+        val testRepo1 = TestRepo1()
         Log.d(TAG, "try get data1 in thread ${Thread.currentThread().name}")
-        val data1 = TestRepo1().getData1(context)
+        val data1 = testRepo1.getData1(context)
         Log.d(TAG, "try get data2 in thread ${Thread.currentThread().name}")
         val data2 = TestRepo2().getData2(data1)
         Log.d(TAG, "inside scope done in ${Thread.currentThread().name}")

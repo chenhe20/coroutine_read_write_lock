@@ -8,26 +8,54 @@ import he.chen.coroutinedemo.api.Api1
 import he.chen.coroutinedemo.datasource.Repo1LocalDataSource
 import he.chen.coroutinedemo.utils.TAG
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.withTimeoutOrNull
 
 class TestRepo1 {
 
+    // i am the bad code
+
     private val api1 = Api1()
     private val localDataSource = Repo1LocalDataSource()
+
+    @Volatile
+    private var _data: String? = null
+
+    private val data: String
+        get() {
+            if (_data == null) {
+                synchronized(this) {
+                    if (_data == null) {
+                        _data = localDataSource.getData()  // 确保只加载一次
+                    }
+                }
+            }
+            return _data!!
+        }
+
+    init {
+        Thread {
+            _data = localDataSource.getData()
+        }.start()
+    }
 
     @WorkerThread
     private suspend fun getData1(): String {
         //val result = api1.request("a")
         val result = api1.fakeAlwaysReturnNewData()
-        return result?.let{
+        return result.let{
             Log.d(TAG, "repo 1 get data = $result from server in ${Thread.currentThread().name}")
-            if (it == "-1") localDataSource.readData()
+            if (it == "-1") data
             else {
                 Log.d(TAG, "call write local datasource 1 function in thread ${Thread.currentThread().name}")
-                localDataSource.writeData(it)
+                MainScope().launch{ localDataSource.writeData(it) }
                 it
             }
-        } ?: localDataSource.readData()
+        }
     }
 
     @MainThread

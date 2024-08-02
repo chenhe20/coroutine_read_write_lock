@@ -28,5 +28,5 @@ class Api1 {
             }
         }
 
-    fun fakeAlwaysReturnNewData() = "1"
+    fun fakeAlwaysReturnNewData() = "-1"
 }
