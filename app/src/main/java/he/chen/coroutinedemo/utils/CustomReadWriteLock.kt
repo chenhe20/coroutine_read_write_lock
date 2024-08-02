@@ -1,11 +1,8 @@
 package he.chen.coroutinedemo.utils
 
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.Semaphore
 import kotlinx.coroutines.sync.withLock
-import okhttp3.internal.notifyAll
 
 class CustomReadWriteLock {
     private val mutex = Mutex()

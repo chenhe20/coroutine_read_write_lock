@@ -15,6 +15,9 @@ import he.chen.coroutinedemo.repo.TestRepo1
 import he.chen.coroutinedemo.repo.TestRepo2
 import he.chen.coroutinedemo.utils.TAG
 import kotlinx.coroutines.launch
+import kotlin.contracts.ExperimentalContracts
+import kotlin.contracts.InvocationKind
+import kotlin.contracts.contract
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -22,6 +25,8 @@ import kotlinx.coroutines.launch
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
+
+    private var a: String? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -43,9 +48,20 @@ class FirstFragment : Fragment() {
         binding.buttonFirst.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
-//        lifecycleScope.launch {
-//            doSuspend()
-//        }
+
+        var i: Int
+        runOneOrMultipleTimes { i = 42 }
+        print(i)
+
+
+    }
+
+    @OptIn(ExperimentalContracts::class)
+    fun runOneOrMultipleTimes(block: () -> Unit) {
+        contract {
+            callsInPlace(block, InvocationKind.AT_LEAST_ONCE)
+        }
+        block()
     }
 
 

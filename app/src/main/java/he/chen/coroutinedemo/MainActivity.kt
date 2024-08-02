@@ -38,7 +38,6 @@ class MainActivity : AppCompatActivity() {
                 CoroutineEntry.callSuspendFunction(context)
             }
         }
-
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 

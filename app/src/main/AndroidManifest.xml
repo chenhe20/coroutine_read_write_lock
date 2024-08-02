@@ -29,4 +29,35 @@
         </activity>
     </application>
 
+    <queries>
+        <!--银联云闪付-->
+        <package android:name="com.unionpay"/>
+        <package android:name="com.unionpay.tsmservice"/>
+        <package android:name="com.unionpay.tsmservice.mi"/>
+        <!--小红书-->
+        <package android:name="com.xingin.xhs" />
+        <!--拼多多-->
+        <package android:name="com.xunmeng.pinduoduo" />
+        <!--快手-->
+        <package android:name="com.kuaishou.nebula" />
+        <!--哔哩哔哩-->
+        <package android:name="tv.danmaku.bili" />
+        <!--应用宝-->
+        <package android:name="com.tencent.android.qqdownloader" />
+        <!--华为-->
+        <package android:name="com.huawei.android.pushagent" />
+        <package android:name="com.huawei.works" />
+        <package android:name="com.huawei.hwid" />
+        <package android:name="com.huawei.hff" />
+        <package android:name="com.huawei.hms" />
+        <!--国家反诈中心-->
+        <package android:name="com.hicorenational.antifraud" />
+        <!--支付宝-->
+        <package android:name="com.eg.android.AlipayGphoneRC" />
+        <package android:name="hk.alipay.wallet" />
+        <package android:name="hk.alipay.walletRC" />
+
+
+    </queries>
+
 </manifest>
