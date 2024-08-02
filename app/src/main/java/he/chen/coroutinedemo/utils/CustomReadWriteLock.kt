@@ -5,6 +5,9 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
 class CustomReadWriteLock {
+
+    // i am doing my feature
+
     private val mutex = Mutex()
     private var readers = 0
     private val noReaders = Channel<Unit>(1)  // 用于控制没有读者时通知写操作
